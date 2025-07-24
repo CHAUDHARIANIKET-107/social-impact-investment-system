@@ -1,0 +1,195 @@
+<div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+               <p>Fund Allocation & Performance Overview</p>
+            </div>
+            <div class="header-actions">
+                <span class="badge">Active Fund</span>
+            </div>
+        </div>
+
+        <!-- Key Metrics Row -->
+        <div class="grid grid-4">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Total Fund Amount</h3>
+                    <span class="card-icon">💰</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="10000000" step="1000" [(ngModel)]="totalFundAmount" class="fund-slider" />
+                            <span class="slider-label">₹{{ totalFundAmount | number }}</span>
+                            <button *ngIf="totalFundAmount" class="clear-btn" (click)="totalFundAmount=''" aria-label="Clear">
+                                <i class="pi pi-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Total Investors</h3>
+                    <span class="card-icon">👥</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value">156</div>
+                </div>
+            </div>
+
+            <div class="card card-profit">
+                <div class="card-header">
+                    <h3 class="card-title">Profit Percentage</h3>
+                    <span class="card-icon card-icon-success">📈</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value card-value-success">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="100" step="0.1" [(ngModel)]="profitPercentage" class="fund-slider" />
+                            <span class="slider-label">{{ profitPercentage }}%</span>
+                            <button *ngIf="profitPercentage" class="clear-btn" (click)="profitPercentage=''" aria-label="Clear">
+                                <i class="pi pi-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Management Fees</h3>
+                    <span class="card-icon card-icon-warning">🏢</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value card-value-warning">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="100" step="0.01" [(ngModel)]="managementFees" class="fund-slider" />
+                            <span class="slider-label">{{ managementFees }}%</span>
+                            <button *ngIf="managementFees" class="clear-btn" (click)="managementFees=''" aria-label="Clear">
+                                <i class="pi pi-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Allocation Settings -->
+        <div class="grid grid-4">
+            <div class="card card-profit">
+                <div class="card-header">
+                    <h3 class="card-title">Profit to Beneficiary</h3>
+                    <span class="card-icon card-icon-success">✅</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value card-value-success">1<span class="card-suffix">%</span></div>
+                </div>
+            </div>
+
+            <div class="card card-profit">
+                <div class="card-header">
+                    <h3 class="card-title">Beneficiary Share</h3>
+                    <span class="card-icon card-icon-success">🎯</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value card-value-success">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="100" step="0.1" [(ngModel)]="beneficiaryShare" class="fund-slider" />
+                            <span class="slider-label">{{ beneficiaryShare }}%</span>
+                            <button *ngIf="beneficiaryShare" class="clear-btn" (click)="beneficiaryShare=''" aria-label="Clear">
+                                <i class="pi pi-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Bank Share</h3>
+                    <span class="card-icon">🏦</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-value">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="100" step="0.1" [(ngModel)]="bankShare" class="fund-slider" />
+                            <span class="slider-label">{{ bankShare }}%</span>
+                            <button *ngIf="bankShare" class="clear-btn" (click)="bankShare=''" aria-label="Clear">
+                                <i class="pi pi-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Row -->
+        <div class="grid grid-3">
+            <!-- Profit Breakdown -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="icon">📊</span>
+                        Profit Breakdown
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Total Profit</span>
+                            <span class="breakdown-value breakdown-value-success">₹60,00,000</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Management Fees</span>
+                            <span class="breakdown-value breakdown-value-warning">₹2,50,000</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Net Profit</span>
+                            <span class="breakdown-value breakdown-value-success">₹57,50,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Allocations -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="icon">📈</span>
+                        Final Allocation
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">To Beneficiaries</span>
+                            <span class="breakdown-value breakdown-value-success">₹43,12,500</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Bank Profit</span>
+                            <span class="breakdown-value breakdown-value-primary">₹14,37,500</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Final to Beneficiary</span>
+                            <span class="breakdown-value breakdown-value-success">₹43,12,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Stats -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="icon">📊</span>
+                        Profit Distribution
+                    </h3>
+                </div>
+                <div class="card-content">
+                     <p-chart type="pie" [data]="profitPieData" [options]="{ plugins: { legend: { position: 'right', align: 'center' } } }"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -7,9 +7,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
 import { CommonModule } from '@angular/common';
+import { InvestorDashboardComponent } from './component/investor-dashboard/investor-dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DemographicDataComponent } from './component/demographic-data/demographic-data.component';
+import { BeneficiariesOutcomeComponent } from './component/beneficiaries-outcome/beneficiaries-outcome.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, 
+    InvestorDashboardComponent, 
+    DemographicDataComponent, BeneficiariesOutcomeComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -18,7 +24,7 @@ import { CommonModule } from '@angular/common';
     ChartModule,
     TabViewModule,
     CommonModule,
-    
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
