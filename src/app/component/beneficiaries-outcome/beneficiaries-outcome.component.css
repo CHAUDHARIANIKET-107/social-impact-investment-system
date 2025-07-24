@@ -114,7 +114,7 @@
   color: #2d3a4a;
 }
 
-.global-filters-bar {
+.title-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,7 +132,11 @@
   overflow-x: auto;
 }
 
-.global-filters-title {
+.title-bar + .title-bar {
+  margin-top: 0.2rem;
+}
+
+.title-name {
   font-size: 1.08rem;
   font-weight: 600;
   color: #2d3a4a;
@@ -180,4 +184,101 @@
   .global-filters .p-dropdown {
     min-width: 140px;
   }
+}
+
+.top-n-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 2rem;
+}
+.top-n-input label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2d3a4a;
+}
+.top-n-input input[type='number'] {
+  width: 60px;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  border: 1px solid #bfc8da;
+  border-radius: 4px;
+}
+
+.top-beneficiaries-table {
+  margin-bottom: 1.2rem;
+  font-size: 0.97rem;
+}
+.top-beneficiaries-table th, .top-beneficiaries-table td {
+  padding: 0.35rem 0.7rem;
+}
+.top-beneficiaries-table th {
+  background: #e3f0ff;
+  color: #1976d2;
+  font-weight: 600;
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator {
+  margin-top: 1.2rem;
+  margin-bottom: 2.2rem;
+  background: #e3f0ff;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  min-height: 56px;
+  align-items: center;
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last {
+  color: #1976d2;
+  background: #fff;
+  border: 1.5px solid #b3d1f7;
+  border-radius: 6px;
+  margin: 0 4px;
+  min-width: 38px;
+  min-height: 38px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.06);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page.p-highlight {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+  font-size: 1.13rem;
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next:not(.p-disabled):hover,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev:not(.p-disabled):hover,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first:not(.p-disabled):hover,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last:not(.p-disabled):hover,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page:not(.p-highlight):hover {
+  background: #b3d1f7;
+  color: #1976d2;
+  border-color: #1976d2;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page:focus,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next:focus,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev:focus,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first:focus,
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+:host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-pages {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }

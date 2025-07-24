@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MOCK_BENEFICIARIES, Beneficiary } from './mock-beneficiaries';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MOCK_BENEFICIARIES, MOCK_TOP_BENEFICIARIES, Beneficiary, TopBeneficiary } from './mock-beneficiaries';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-beneficiaries-outcome',
@@ -8,6 +9,26 @@ import { MOCK_BENEFICIARIES, Beneficiary } from './mock-beneficiaries';
 })
 export class BeneficiariesOutcomeComponent implements OnInit {
   beneficiaries: Beneficiary[] = MOCK_BENEFICIARIES;
+  topN = 10;
+  topBeneficiaries: TopBeneficiary[] = [];
+  topBeneficiaryCols = [
+    { field: 'id', header: 'ID' },
+    { field: 'name', header: 'Name' },
+    { field: 'age', header: 'Age' },
+    { field: 'income', header: 'Income' },
+    { field: 'education', header: 'Education' },
+    { field: 'gender', header: 'Gender' },
+    { field: 'willing_to_csr', header: 'Willing to CSR' },
+    { field: 'location', header: 'Location' },
+    { field: 'requested_amount', header: 'Requested Amount' },
+    { field: 'purpose', header: 'Purpose' },
+    { field: 'past_funding_received', header: 'Past Funding' },
+    { field: 'current_dept_amount', header: 'Current Debt' },
+    { field: 'beneficiary_score', header: 'Score' }
+  ];
+  showPagination = true;
+  @ViewChild('topTable') topTable: Table | undefined;
+  topTableFirst = 0;
 
   // Filter state
   selectedGender: string | null = null;
@@ -30,8 +51,21 @@ export class BeneficiariesOutcomeComponent implements OnInit {
   purposePieOptions: any;
 
   ngOnInit() {
+    this.updateTopBeneficiaries();
     this.updateFilterOptions();
     this.prepareAllCharts();
+  }
+
+  updateTopBeneficiaries() {
+    const sorted = [...MOCK_TOP_BENEFICIARIES].sort((a, b) => b.beneficiary_score - a.beneficiary_score);
+    this.topBeneficiaries = sorted.slice(0, this.topN);
+    // Always show paginator, but navigation will be disabled if only one page
+    setTimeout(() => {
+      if (this.topTable) {
+        const page = Math.ceil(this.topN / 10) - 1;
+        this.topTable.first = page * 10;
+      }
+    });
   }
 
   onFilterChange() {
