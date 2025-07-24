@@ -1,0 +1,247 @@
+.chart-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 32px;
+  width: 100%;
+}
+.chart-pie-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 24px;
+}
+::ng-deep .chart-pie-horizontal .p-chart-legend {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 24px;
+}
+/* Custom Dropdown Styling for Chart Column Selector */
+.chart-row .p-dropdown {
+  background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(106,17,203,0.10);
+  border: 1.5px solid #2575fc;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2575fc;
+  padding: 8px 18px;
+  margin-top: 8px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.chart-row .p-dropdown:hover, .chart-row .p-dropdown:focus-within {
+  box-shadow: 0 4px 16px rgba(106,17,203,0.18);
+  border-color: #6a11cb;
+}
+.chart-row .p-dropdown .p-dropdown-label {
+  color: #2575fc;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.chart-row .p-dropdown .p-dropdown-trigger {
+  color: #6a11cb;
+}
+.chart-row label {
+  font-weight: 600;
+  color: #2575fc;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+/* Enhanced PrimeNG Tabs Styling */
+::ng-deep .p-tabview {
+  display: block;
+  width: 100%;
+  margin: 0 auto 12px auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+::ng-deep .p-tabview-nav {
+  background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 2px 12px rgba(106,17,203,0.10);
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #2575fc;
+}
+::ng-deep .p-tabview-nav li {
+  margin-right: 12px;
+}
+::ng-deep .p-tabview-nav-link {
+  background: none !important;
+  color: #2575fc !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none !important;
+  border-radius: 10px 10px 0 0;
+  padding: 12px 32px 10px 32px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(106,17,203,0.08);
+  position: relative;
+}
+::ng-deep .p-tabview-nav-link:not(.p-tabview-nav-link-active):hover {
+  background: #e0eafc !important;
+  color: #6a11cb !important;
+  box-shadow: 0 4px 16px rgba(106,17,203,0.12);
+}
+::ng-deep .p-tabview-nav-link.p-tabview-nav-link-active {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(106,17,203,0.18);
+  z-index: 2;
+}
+::ng-deep .p-tabview-panels {
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 2px 12px rgba(106,17,203,0.08);
+  padding: 32px 0 0 0;
+}
+@import "./../../node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "./../../node_modules/primeng/resources/primeng.min.css";
+@import "./../../node_modules/primeicons/primeicons.css";
+
+/* Block style and side padding for PrimeNG tabs */
+::ng-deep .p-tabview {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+body, .p-m-2 {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: #2d3748;
+}
+
+.p-dropdown {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.p-dropdown:hover, .p-dropdown:focus-within {
+  box-shadow: 0 2px 8px rgba(106,17,203,0.12);
+  border-color: #2575fc;
+}
+.p-chart {
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.p-chart:hover {
+  box-shadow: 0 8px 32px rgba(106,17,203,0.18);
+  background: #e0eafc;
+}
+.p-m-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(106,17,203,0.12);
+  margin-bottom: 32px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-card h3, .main-card h4 {
+  color: #2575fc;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.main-card label {
+  font-weight: 500;
+  color: #607D8B;
+}
+.main-card .drop-area {
+  margin-bottom: 18px;
+}
+.main-card .p-mt-4 {
+  margin-top: 24px;
+}
+.main-card .p-dropdown {
+  width: 100%;
+  margin-bottom: 18px;
+}
+.main-card .p-chart {
+  margin-top: 18px;
+  background: #f4f6fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(106,17,203,0.08);
+  padding: 18px;
+}
+/* Fancy Table Styles with Borders */
+.fancy-table .p-datatable {
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  background: #fff;
+  overflow: hidden;
+}
+.fancy-table .p-datatable-header {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.fancy-table th {
+  background: #f4f6fb;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 8px 6px;
+  border: 1px solid #bfc8da;
+}
+.fancy-table td {
+  font-size: 0.85rem;
+  padding: 7px 6px;
+  border: 1px solid #bfc8da;
+}
+.fancy-table tr {
+  border: 1px solid #bfc8da;
+}
+.fancy-table tr:hover td {
+  background: #eaf1fb;
+}
+.fancy-table .p-paginator {
+  background: #f4f6fb;
+  border-radius: 0 0 12px 12px;
+  padding: 12px 0 8px 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 -2px 8px rgba(106,17,203,0.08);
+  margin-top: 32px;
+}
+.fancy-table .p-paginator .p-paginator-pages .p-paginator-page {
+  background: none;
+  color: #2575fc;
+  border: none;
+  border-radius: 0;
+  margin: 0 2px;
+  padding: 0 8px;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.fancy-table .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  border: none;
+}
+.fancy-table .p-paginator .p-paginator-pages .p-paginator-page:hover {
+  background: #eaf1fb;
+  color: #2575fc;
+}
+.fancy-table .p-paginator .p-paginator-current {
+  font-size: 0.8rem;
+  color: #6a11cb;
+  margin-left: 12px;
+}

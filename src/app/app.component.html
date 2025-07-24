@@ -1,0 +1,57 @@
+<p-tabView class="block pb1">
+  <p-tabPanel header="Upload">
+    <div class="main-card" >
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
+        <h3>Beneficiaries Data Upload</h3>
+        <div class="drop-area" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" [class.active]="isDragActive">
+          <span>Drag & Drop Excel file here or </span>
+          <label class="upload-label">
+            <input type="file" class="upload-label" (change)="onFileChange($event)" accept=".xlsx,.xls" class="blue-btn"/>
+          </label>
+        </div>
+      </div>
+
+      <div *ngIf="excelData.length">
+        <h4>Beneficiaries Demographic Data</h4>
+        <p-table [value]="excelData" [columns]="columns" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]" class="fancy-table">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">{{ col }}</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-row let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">{{ row[columns.indexOf(col)] }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+        <div class="chart-row-center">
+          <div class="chart-dropdown">
+            <label for="columnSelect">Select Column for Pie Chart:</label>
+            <p-dropdown [options]="columns" [(ngModel)]="selectedColumn" 
+            (onChange)="onColumnSelect()" placeholder="Select"
+            [showTransitionOptions]="'0ms'"
+            [hideTransitionOptions]="'0ms'"></p-dropdown>
+          </div>
+          <div *ngIf="pieData" class="chart-pie-horizontal">
+            <h3>Pie Chart</h3>
+            <p-chart type="pie" [data]="pieData" [options]="{ plugins: { legend: { position: 'right', align: 'center' } } }"></p-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Dashboard">
+    <div class="main-card">
+      <h3>Dashboard</h3>
+      <p>Dashboard content goes here.</p>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Outcome">
+    <div class="main-card">
+      <h3>Outcome</h3>
+      <p>Outcome content goes here.</p>
+    </div>
+  </p-tabPanel>
+</p-tabView>
