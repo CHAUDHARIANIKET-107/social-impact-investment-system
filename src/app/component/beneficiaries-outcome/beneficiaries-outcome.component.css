@@ -1,0 +1,91 @@
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  justify-items: stretch;
+  align-items: start;
+}
+
+.chart-group {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  min-height: 500px;
+  /* Remove border and box-shadow for a softer look */
+}
+
+/* Unique pastel backgrounds for each chart */
+.chart-group:nth-child(1) {
+  background: linear-gradient(135deg, #e3f0ff 0%, #f6fbff 100%); /* pastel blue */
+}
+.chart-group:nth-child(2) {
+  background: linear-gradient(135deg, #ffe3ec 0%, #fff6fa 100%); /* pastel pink */
+}
+.chart-group:nth-child(3) {
+  background: linear-gradient(135deg, #e3ffe8 0%, #f6fff9 100%); /* pastel green */
+}
+.chart-group:nth-child(4) {
+  background: linear-gradient(135deg, #fffbe3 0%, #fffdf6 100%); /* pastel yellow */
+}
+
+.chart-group h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.chart-group p-chart {
+  width: 95% !important;
+  max-width: 700px;
+  height: 380px !important;
+  min-height: 320px;
+}
+
+.pie-chart-group {
+  min-height: 500px;
+}
+.pie-chart-group p-chart,
+.pie-chart-group p-chart > div,
+.pie-chart-group canvas {
+  height: 240px !important;
+  min-height: 180px !important;
+  max-height: 260px !important;
+}
+
+@media (max-width: 1200px) {
+  .chart-group p-chart {
+    max-width: 100%;
+    height: 320px !important;
+  }
+  .pie-chart-group p-chart,
+  .pie-chart-group p-chart > div,
+  .pie-chart-group canvas {
+    height: 200px !important;
+  }
+  .chart-group, .pie-chart-group {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 900px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+  .chart-group p-chart {
+    width: 100% !important;
+    height: 240px !important;
+    min-height: 180px;
+  }
+  .pie-chart-group p-chart,
+  .pie-chart-group p-chart > div,
+  .pie-chart-group canvas {
+    height: 180px !important;
+  }
+  .chart-group, .pie-chart-group {
+    min-height: 220px;
+  }
+}

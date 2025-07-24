@@ -1,1 +1,18 @@
-<p>beneficiaries-outcome works!</p>
+<div class="charts-container">
+  <div class="chart-group">
+    <h2>Funds Distribution Trend Over Months</h2>
+    <p-chart type="bar" [data]="fundsTrendData" [options]="fundsTrendOptions"></p-chart>
+  </div>
+  <div class="chart-group">
+    <h2>Income Level Impact Analysis (Before & After Funding)</h2>
+    <p-chart type="bar" [data]="incomeImpactData" [options]="incomeImpactOptions"></p-chart>
+  </div>
+  <div class="chart-group">
+    <h2>Average Debt Reduction</h2>
+    <p-chart type="bar" [data]="debtReductionData" [options]="debtReductionOptions"></p-chart>
+  </div>
+  <div class="chart-group pie-chart-group">
+    <h2>Purpose-wise Distribution</h2>
+    <p-chart type="pie" [data]="purposePieData" [options]="purposePieOptions"></p-chart>
+  </div>
+</div>
