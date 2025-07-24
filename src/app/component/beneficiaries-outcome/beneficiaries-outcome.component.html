@@ -1,3 +1,28 @@
+<div class="container">
+<div class="global-filters-bar">
+  <span class="global-filters-title">Global Filters for Historical Trend Analysis</span>
+  <div class="global-filters">
+    <p-dropdown [options]="genderOptions" [(ngModel)]="selectedGender" placeholder="Gender" (onChange)="onFilterChange()" [showClear]="true" [filter]="true">
+      <ng-template let-item pTemplate="item">
+        <span *ngIf="item.value === null">All</span>
+        <span *ngIf="item.value !== null">{{item.label}}</span>
+      </ng-template>
+    </p-dropdown>
+    <p-dropdown [options]="locationOptions" [(ngModel)]="selectedLocation" placeholder="Location" (onChange)="onFilterChange()" [showClear]="true" [filter]="true">
+      <ng-template let-item pTemplate="item">
+        <span *ngIf="item.value === null">All</span>
+        <span *ngIf="item.value !== null">{{item.label}}</span>
+      </ng-template>
+    </p-dropdown>
+    <p-dropdown [options]="ageGroupOptions" [(ngModel)]="selectedAgeGroup" placeholder="Age Group" (onChange)="onFilterChange()" [showClear]="true">
+      <ng-template let-item pTemplate="item">
+        <span *ngIf="item.value === null">All</span>
+        <span *ngIf="item.value !== null">{{item.label}}</span>
+      </ng-template>
+    </p-dropdown>
+  </div>
+</div>
+
 <div class="charts-container">
   <div class="chart-group">
     <h2>Funds Distribution Trend Over Months</h2>
@@ -15,4 +40,5 @@
     <h2>Purpose-wise Distribution</h2>
     <p-chart type="pie" [data]="purposePieData" [options]="purposePieOptions"></p-chart>
   </div>
+</div>
 </div>

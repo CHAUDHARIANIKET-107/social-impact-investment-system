@@ -9,23 +9,68 @@ import { MOCK_BENEFICIARIES, Beneficiary } from './mock-beneficiaries';
 export class BeneficiariesOutcomeComponent implements OnInit {
   beneficiaries: Beneficiary[] = MOCK_BENEFICIARIES;
 
-  // Chart 1: Funds Distribution Trend Over Months
+  // Filter state
+  selectedGender: string | null = null;
+  selectedLocation: string | null = null;
+  selectedAgeGroup: number[] | null = null;
+
+  // Dynamic filter options
+  genderOptions: { label: string; value: string | null }[] = [];
+  locationOptions: { label: string; value: string | null }[] = [];
+  ageGroupOptions: { label: string; value: number[] | null }[] = [];
+
+  // Chart data/option objects
   fundsTrendData: any;
   fundsTrendOptions: any;
-
-  // Chart 2: Income Level Impact Analysis (Before/After)
   incomeImpactData: any;
   incomeImpactOptions: any;
-
-  // Chart 3: Average Debt Reduction
   debtReductionData: any;
   debtReductionOptions: any;
-
-  // Chart 4: Purpose-wise Distribution Pie Chart
   purposePieData: any;
   purposePieOptions: any;
 
   ngOnInit() {
+    this.updateFilterOptions();
+    this.prepareAllCharts();
+  }
+
+  onFilterChange() {
+    this.updateFilterOptions();
+    this.prepareAllCharts();
+  }
+
+  updateFilterOptions() {
+    // Gender options
+    const uniqueGenders = Array.from(new Set(this.beneficiaries.map(b => b.gender)));
+    this.genderOptions = [
+      { label: 'All', value: null },
+      ...uniqueGenders.map(g => ({ label: g, value: g }))
+    ];
+    // Location options
+    const uniqueLocations = Array.from(new Set(this.beneficiaries.map(b => b.location)));
+    this.locationOptions = [
+      { label: 'All', value: null },
+      ...uniqueLocations.map(loc => ({ label: loc, value: loc }))
+    ];
+    // Age group options
+    this.ageGroupOptions = [
+      { label: 'All', value: null },
+      { label: '10-30', value: [10, 30] },
+      { label: '30-50', value: [30, 50] },
+      { label: '50+', value: [50, 200] }
+    ];
+  }
+
+  getFilteredBeneficiaries(): Beneficiary[] {
+    return this.beneficiaries.filter(b => {
+      const genderMatch = !this.selectedGender || b.gender === this.selectedGender;
+      const locationMatch = !this.selectedLocation || b.location === this.selectedLocation;
+      const ageGroupMatch = !this.selectedAgeGroup || (b.age >= this.selectedAgeGroup[0] && b.age < this.selectedAgeGroup[1]);
+      return genderMatch && locationMatch && ageGroupMatch;
+    });
+  }
+
+  prepareAllCharts() {
     this.prepareFundsTrendChart();
     this.prepareIncomeImpactChart();
     this.prepareDebtReductionChart();
@@ -33,9 +78,9 @@ export class BeneficiariesOutcomeComponent implements OnInit {
   }
 
   prepareFundsTrendChart() {
-    // Group by month and sum funds_received
+    const filtered = this.getFilteredBeneficiaries();
     const monthMap: { [month: string]: number } = {};
-    this.beneficiaries.forEach(b => {
+    filtered.forEach(b => {
       const month = b.date_of_funding.slice(0, 7); // YYYY-MM
       monthMap[month] = (monthMap[month] || 0) + b.funds_received;
     });
@@ -73,7 +118,7 @@ export class BeneficiariesOutcomeComponent implements OnInit {
   }
 
   prepareIncomeImpactChart() {
-    // Define income ranges
+    const filtered = this.getFilteredBeneficiaries();
     const ranges = [
       { label: '0-5k', min: 0, max: 5000 },
       { label: '5k-10k', min: 5000, max: 10000 },
@@ -86,8 +131,8 @@ export class BeneficiariesOutcomeComponent implements OnInit {
     const afterCounts: number[] = [];
     const labels: string[] = [];
     ranges.forEach(range => {
-      const beforeInRange = this.beneficiaries.filter(b => b.old_income >= range.min && b.old_income < range.max);
-      const afterInRange = this.beneficiaries.filter(b => b.current_income >= range.min && b.current_income < range.max);
+      const beforeInRange = filtered.filter(b => b.old_income >= range.min && b.old_income < range.max);
+      const afterInRange = filtered.filter(b => b.current_income >= range.min && b.current_income < range.max);
       if (beforeInRange.length > 0 || afterInRange.length > 0) {
         labels.push(range.label);
         beforeCounts.push(beforeInRange.length);
@@ -131,9 +176,9 @@ export class BeneficiariesOutcomeComponent implements OnInit {
   }
 
   prepareDebtReductionChart() {
-    // Average before and after debt
-    const avgOldDebt = this.beneficiaries.reduce((sum, b) => sum + b.old_debt, 0) / this.beneficiaries.length;
-    const avgCurrentDebt = this.beneficiaries.reduce((sum, b) => sum + b.current_debt, 0) / this.beneficiaries.length;
+    const filtered = this.getFilteredBeneficiaries();
+    const avgOldDebt = filtered.length > 0 ? filtered.reduce((sum, b) => sum + b.old_debt, 0) / filtered.length : 0;
+    const avgCurrentDebt = filtered.length > 0 ? filtered.reduce((sum, b) => sum + b.current_debt, 0) / filtered.length : 0;
     this.debtReductionData = {
       labels: ['Average Debt Before', 'Average Debt After'],
       datasets: [
@@ -151,7 +196,7 @@ export class BeneficiariesOutcomeComponent implements OnInit {
   }
 
   preparePurposePieChart() {
-    // Group purposes into generic categories
+    const filtered = this.getFilteredBeneficiaries();
     const categoryMap: { [cat: string]: string[] } = {
       Medical: ['Medical Treatment', 'Medical Emergency'],
       Education: ['Children Education'],
@@ -159,7 +204,7 @@ export class BeneficiariesOutcomeComponent implements OnInit {
       'Business/Real Estate': ['Business Setup']
     };
     const counts: { [cat: string]: number } = {};
-    this.beneficiaries.forEach(b => {
+    filtered.forEach(b => {
       let found = false;
       for (const cat in categoryMap) {
         if (categoryMap[cat].includes(b.purpose)) {
