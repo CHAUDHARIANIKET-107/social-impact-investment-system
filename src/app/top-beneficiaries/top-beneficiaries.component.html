@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Top Beneficiaries</h2>
+
+  <label for="topN">Number of records to display:</label>
+  <input
+    type="number"
+    [(ngModel)]="topN"
+    (input)="onTopNChange()"
+    min="1"
+    max="100"
+  />
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Income</th>
+        <th>Number Of Dependents</th>
+        <th>Past Fundings</th>
+        <th>Current Debt</th>
+        <th>Location</th>
+        <th>Purpose</th>
+        <th>Requested Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of displayedBeneficiaries">
+        <td>{{ b.id }}</td>
+        <td>{{ b.name }}</td>
+        <td>{{ b.beneficiary_score }}</td>
+        <td>{{ b.age }}</td>
+        <td>{{ b.gender }}</td>
+        <td>₹{{ b.income }}</td>
+        <td>{{ b.no_of_dependents }}</td>
+        <td>₹{{ b.past_funding_received }}</td>
+        <td>₹{{ b.current_dept_amount }}</td>
+        <td>{{ b.location }}</td>
+        <td>{{ b.purpose }}</td>
+        <td>₹{{ b.requested_amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
