@@ -1,4 +1,4 @@
-<p-tabView class="block pb1">
+<p-tabView class="block pb1" [(activeIndex)]="activeIndex">
   <p-tabPanel header="Upload">
     <div class="main-card" >
       <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 10vh;">
@@ -50,8 +50,7 @@
   </p-tabPanel>
   <p-tabPanel header="Outcome">
     <div class="main-card">
-      <h3>Outcome</h3>
-      <p>Outcome content goes here.</p>
+      <app-welfare-outcome></app-welfare-outcome>
     </div>
   </p-tabPanel>
 </p-tabView>
