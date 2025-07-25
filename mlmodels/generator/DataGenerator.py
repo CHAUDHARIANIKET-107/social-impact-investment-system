@@ -40,7 +40,11 @@ def generate_row():
 
 
     gender = random.choice(['Male', 'Female', 'Other'])
-    income = random.choice([10000, 20000, 30000, 50000, 70000, 100000])
+    low_wages = random.choice([0,1])
+    if(low_wages != 0):
+        income = random.choice([10000, 20000, 30000, 50000, 70000, 100000])
+    else:
+        income = 0
     education_levels = ['None', 'Primary', 'Secondary', 'Graduate', 'Postgraduate']
     education = random.choice(education_levels)
     religion = random.choice(['Hindu', 'Muslim', 'Christian', 'Sikh', 'Buddhist', 'Other'])
@@ -66,6 +70,7 @@ def generate_row():
         credit_score = random.int(150, 300)
     else :
         credit_score = 0
+        
 
     row = {
         'age': random.randint(18, 65),
@@ -103,7 +108,8 @@ def generate_row():
         'willing_to_educate_girl_child': random.choice([0,1]),
         'willing_to_give_children_higher_education': random.choice([0,1]),
 
-        'credit_score': credit_score
+        'credit_score': credit_score,
+        'low_wages': low_wages
 
     }
 
