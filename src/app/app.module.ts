@@ -11,11 +11,12 @@ import { InvestorDashboardComponent } from './component/investor-dashboard/inves
 import { AppRoutingModule } from './app-routing.module';
 import { DemographicDataComponent } from './component/demographic-data/demographic-data.component';
 import { BeneficiariesOutcomeComponent } from './component/beneficiaries-outcome/beneficiaries-outcome.component';
+import { FinLitProgComponent } from './component/fin-lit-prog/fin-lit-prog.component';
 
 @NgModule({
   declarations: [AppComponent, 
     InvestorDashboardComponent, 
-    DemographicDataComponent, BeneficiariesOutcomeComponent],
+    DemographicDataComponent, BeneficiariesOutcomeComponent, FinLitProgComponent],
   imports: [
     BrowserModule,
     FormsModule,

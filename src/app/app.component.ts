@@ -28,13 +28,16 @@ export class AppComponent {
     this.selectedTabIndex = event.index;
     switch (event.index) {
       case 0:
-        this.router.navigate(['/upload']);
+        this.router.navigate(['/dashboard']);
         break;
       case 1:
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/upload']);
         break;
       case 2:
         this.router.navigate(['/outcome']);
+        break;
+      case 3:
+        this.router.navigate(['/fin-lit-prog']);
         break;
     }
   }
