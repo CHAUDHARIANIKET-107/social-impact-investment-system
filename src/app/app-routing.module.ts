@@ -6,6 +6,7 @@ import { BeneficiariesOutcomeComponent } from './component/beneficiaries-outcome
 import { FinLitProgComponent } from './component/fin-lit-prog/fin-lit-prog.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: InvestorDashboardComponent },
   { path: 'upload', component: DemographicDataComponent },
   { path: 'outcome', component: BeneficiariesOutcomeComponent },
