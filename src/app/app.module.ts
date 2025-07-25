@@ -12,11 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { DemographicDataComponent } from './component/demographic-data/demographic-data.component';
 import { BeneficiariesOutcomeComponent } from './component/beneficiaries-outcome/beneficiaries-outcome.component';
 import { FinLitProgComponent } from './component/fin-lit-prog/fin-lit-prog.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [AppComponent, 
     InvestorDashboardComponent, 
-    DemographicDataComponent, BeneficiariesOutcomeComponent, FinLitProgComponent],
+    DemographicDataComponent, BeneficiariesOutcomeComponent, FinLitProgComponent, HomeComponent],
   imports: [
     BrowserModule,
     FormsModule,

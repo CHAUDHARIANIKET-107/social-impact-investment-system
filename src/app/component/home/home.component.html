@@ -1,0 +1,96 @@
+<div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Systematic Impact Fund</h1>
+                <p>
+                    Invest in sustainable change. Generate returns while creating lasting social impact through our innovative fund structure.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-hero btn-xl animate-pulse-glow" (click)="goToDashboard($event)">
+                        Start Investing Today
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#learn" class="btn btn-transparent btn-xl">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Your Investment Creates Impact</h2>
+                <p>
+                    Follow the journey of your investment as it generates returns and transforms communities
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="card" style="cursor:pointer" (click)="goToDashboard($event)">
+                    <div class="card-icon primary">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>1. Invest in Fund</h3>
+                    <p>
+                        Investors contribute to our Systematic Impact Fund, pooling resources for maximum impact and returns.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card" style="cursor:pointer" (click)="goToOutcome($event)">
+                    <div class="card-icon secondary">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18M7 12l4-4 4 4 6-6"/>
+                        </svg>
+                    </div>
+                    <h3>2. Pool of Money</h3>
+                    <p>
+                        Fund profits are consolidated into a dedicated pool, creating a stable foundation for reinvestment.
+                    </p>
+                    <a href="#welfare" class="btn btn-impact" style="margin-top: 1rem; font-size: 0.75rem; padding: 0.5rem 1rem;">
+                        View Pool Details
+                    </a>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card">
+                    <div class="card-icon accent">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                    </div>
+                    <h3>3. Government Bonds</h3>
+                    <p>
+                        Pool money is reinvested in secure government bonds, ensuring stable, guaranteed returns.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="card" style="cursor:pointer" (click)="goToOutcome($event)">
+                    <div class="card-icon secondary">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>4. Welfare Impact</h3>
+                    <p>
+                        Bond profits fund education, healthcare, and wellbeing programs for communities in need.
+                    </p>
+                    <a href="#impact" class="btn btn-impact" style="margin-top: 1rem; font-size: 0.75rem; padding: 0.5rem 1rem;">
+                        See Impact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

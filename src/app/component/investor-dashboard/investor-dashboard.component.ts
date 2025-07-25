@@ -25,7 +25,9 @@ export class InvestorDashboardComponent {
     console.log('Recalculated values:');
     this.profitamount = this.totalFundAmount / 100 * this.profitPercentage;
     this.managementfeesamount = (this.totalFundAmount / 100) * this.managementFees;
-    
+    this.csrProfitshareamount = (this.profitamount/100) * this.csrProfitShare;
+    this.beneficiaryfundpool = this.csrProfitshareamount + this.managementfeesamount;
+    this.totalReturn = this.profitamount;
   }
   //totalReturn: number = 6000000;
   //managementFeesAmount: number = 250000;
@@ -35,6 +37,7 @@ export class InvestorDashboardComponent {
   managementfeesamount: any = 0.5;
   profitPercentage: any = 12;
   managementFees: any = 0.5;
+  csrProfitshareamount = 60;
 
   beneficiaryShare: any = 75;
   bankShare: any = 25;
@@ -45,11 +48,11 @@ export class InvestorDashboardComponent {
   bankAmount: number = 1437500;
   investorsAmount: number = 4312500;
   beneficiariesAmount = (this.beneficiaryShare / 100) * this.totalFundAmount;
-  totalReturn = this.beneficiariesAmount + this.bankAmount + this.investorsAmount;
+  totalReturn = this.profitPercentage;
    managementFeesAmount = (this.managementFees / 100) * this.totalFundAmount;
   netProfitInvestors: number = this.totalReturn - this.managementFeesAmount;
   //profitPercentage = (this.netProfitInvestors / this.totalFundAmount) * 100;
- 
+  beneficiaryfundpool = 310;
   csrProfitShareAmount = (this.csrProfitShare / 100) * this.totalFundAmount;
   
 

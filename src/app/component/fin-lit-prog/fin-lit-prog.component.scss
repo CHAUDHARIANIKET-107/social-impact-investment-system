@@ -1,3 +1,16 @@
+// Left-aligned card header, no separator
+.card-header-left {
+  padding: 16px 20px 8px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  background: none;
+  border-bottom: none;
+  box-shadow: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
 .financial-inclusion-summary {
     font-family: 'Segoe UI', Roboto, sans-serif;
     max-width: 1200px;

@@ -88,9 +88,7 @@
                         <div class="slider-container">
                             <input type="range" min="0" max="100" step="0.1" [(ngModel)]="csrProfitShare" class="fund-slider" />
                             <span class="slider-label">{{ csrProfitShare }}%</span>
-                            <button *ngIf="csrProfitShare" class="clear-btn" aria-label="Clear">
-                                <i class="pi pi-times"></i>
-                            </button>
+                            <span class="slider-label greyed">₹{{csrProfitshareamount}}</span>
                         </div>
                     </div>
                 </div>
@@ -98,75 +96,88 @@
 
             <div class="card card-profit">
                 <div class="card-header">
-                    <h3 class="card-title">Beneficiary Share</h3>
+                    <h3 class="card-title">Beneficiary Fund Pool</h3>
                     <span class="card-icon card-icon-success">🎯</span>
                 </div>
                 <div class="card-content">
                     <div class="card-value card-value-success">
                         <div class="slider-container">
-                            <input type="range" min="0" max="100" step="0.1" [(ngModel)]="beneficiaryShare" class="fund-slider" />
-                            <span class="slider-label">{{ beneficiaryShare }}%</span>
-                            <button *ngIf="beneficiaryShare" class="clear-btn" (click)="beneficiaryShare=''" aria-label="Clear">
-                                <i class="pi pi-times"></i>
-                            </button>
+                            <span class="slider-label">₹{{ beneficiaryfundpool }}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card card-danger">
-                <div class="card-header">
-                    <h3 class="card-title">Bank Share</h3>
-                    <span class="card-icon">🏦</span>
-                </div>
-                <div class="card-content">
-                    <div class="card-value">
-                        <div class="slider-container">
-                            <input type="range" min="0" max="100" step="0.1" [(ngModel)]="bankShare" class="fund-slider" />
-                            <span class="slider-label">{{ bankShare }}%</span>
-                            <button *ngIf="bankShare" class="clear-btn" (click)="bankShare=''" aria-label="Clear">
-                                <i class="pi pi-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Results Row -->
         <div class="grid grid-3">
-            <!-- Profit Breakdown -->
-            <div class="card card-warning">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        <span class="icon">📊</span>
-                        Profit Breakdown
-                    </h3>
+            <div class="grid grid-3">
+                <div class="card card-profit">
+                    <div class="card-header">
+                        <h3 class="card-title">Bond Investment Return Beneficiaries Share</h3>
+                        <span class="card-icon card-icon-success">🎯</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value card-value-success">
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" step="0.1" [(ngModel)]="beneficiaryShare" class="fund-slider" />
+                                <span class="slider-label">{{ beneficiaryShare }}%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div class="stats-grid">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Total Return</span>
-                            <span class="breakdown-value breakdown-value-success">
-                                ₹{{ totalReturn | number }}
-                            </span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Management Fees</span>
-                            <span class="breakdown-value breakdown-value-warning">
-                                ₹{{ managementFeesAmount | number }}
-                            </span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Net Profit Investors</span>
-                            <span class="breakdown-value breakdown-value-success">
-                                ₹{{ netProfitInvestors | number }}
-                            </span>
+
+                
+
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span class="icon">📊</span>
+                            Profit Breakdown
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="stats-grid">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Total Return</span>
+                                <span class="breakdown-value breakdown-value-success">
+                                    ₹{{ totalReturn | number }}
+                                </span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Management Fees</span>
+                                <span class="breakdown-value breakdown-value-warning">
+                                    ₹{{ managementFeesAmount | number }}
+                                </span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Net Profit Investors</span>
+                                <span class="breakdown-value breakdown-value-success">
+                                    ₹{{ netProfitInvestors | number }}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+             <div class="grid grid-3">
+                
+            <div class="card card-profit">
+                    <div class="card-header">
+                        <h3 class="card-title">Bond Investment Return Bank Return</h3>
+                        <span class="card-icon card-icon-success">🎯</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value card-value-success">
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" step="0.1" [(ngModel)]="bankShare" class="fund-slider" />
+                                <span class="slider-label">{{ bankShare }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
             <!-- Final Allocations -->
             <div class="card card-warning">
                 <div class="card-header">
@@ -198,6 +209,9 @@
                     </div>
                 </div>
             </div>
+             </div>
+            <!-- Profit Breakdown -->
+            
 
             <!-- Performance Stats -->
             <div class="card card-warning">

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedTabIndex = 1;
+  selectedTabIndex = 0;
 
   constructor(private router: Router) {}
 
@@ -28,15 +28,18 @@ export class AppComponent {
     this.selectedTabIndex = event.index;
     switch (event.index) {
       case 0:
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
         break;
       case 1:
-        this.router.navigate(['/upload']);
+        this.router.navigate(['/dashboard']);
         break;
       case 2:
-        this.router.navigate(['/outcome']);
+        this.router.navigate(['/upload']);
         break;
       case 3:
+        this.router.navigate(['/outcome']);
+        break;
+      case 4:
         this.router.navigate(['/fin-lit-prog']);
         break;
     }

@@ -1,3 +1,30 @@
+/* Global CSS Variables for Theme */
+:root {
+    /* Colors */
+    --background: hsl(210, 20%, 98%);
+    --foreground: hsl(215, 25%, 15%);
+    --primary: hsl(210, 85%, 48%);
+    --primary-glow: hsl(210, 85%, 65%);
+    --secondary: hsl(142, 71%, 45%);
+    --secondary-glow: hsl(142, 71%, 55%);
+    --accent: hsl(45, 93%, 58%);
+    --impact-blue: hsl(210, 85%, 48%);
+    --impact-green: hsl(142, 71%, 45%);
+    --impact-navy: hsl(215, 45%, 25%);
+    --muted: hsl(210, 20%, 94%);
+    --muted-foreground: hsl(215, 15%, 55%);
+    --border: hsl(215, 15%, 85%);
+    --card: hsl(0, 0%, 100%);
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210, 85%, 48%), hsl(142, 71%, 45%));
+    --gradient-primary: linear-gradient(135deg, hsl(210, 85%, 48%), hsl(210, 85%, 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142, 71%, 45%), hsl(142, 71%, 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%, 0.9), hsl(0, 0%, 100%, 0.7));
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(210, 85%, 48%, 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(215, 25%, 15%, 0.1);
+    --shadow-glow: 0 0 40px hsl(210, 85%, 65%, 0.3);
+}
 /* You can add global styles to this file, and also import other style files */
 
 @import "~ag-grid-community/styles/ag-grid.css";
