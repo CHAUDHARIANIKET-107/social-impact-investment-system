@@ -21,13 +21,20 @@ export class InvestorDashboardComponent {
   }
   onRecalculate() {
     // Example: Refresh pie chart data and log values
-    this.updatePieChart();
+    
     console.log('Recalculated values:');
     this.profitamount = this.totalFundAmount / 100 * this.profitPercentage;
     this.managementfeesamount = (this.totalFundAmount / 100) * this.managementFees;
     this.csrProfitshareamount = (this.profitamount/100) * this.csrProfitShare;
     this.beneficiaryfundpool = this.csrProfitshareamount + this.managementfeesamount;
     this.totalReturn = this.profitamount;
+    this.managementFeesAmount = (this.totalFundAmount/100) *2.5
+    this.netProfitInvestors = this.totalReturn - this.managementFeesAmount;
+    this.beneficiariesAmount = this.beneficiaryfundpool * 0.8;
+    this.bankAmount = this.beneficiaryfundpool * 0.2;
+    this.bondamount = this.beneficiaryfundpool;
+
+    this.updatePieChart();
   }
   //totalReturn: number = 6000000;
   //managementFeesAmount: number = 250000;
@@ -39,9 +46,9 @@ export class InvestorDashboardComponent {
   managementFees: any = 0.5;
   csrProfitshareamount = 60;
 
-  beneficiaryShare: any = 75;
-  bankShare: any = 25;
-
+  beneficiaryShare: any = 80;
+  bankShare: any = 20;
+  bondamount: number = 1000000;
   csrProfitShare=1
 
   //beneficiariesAmount: number = 4312500;
@@ -49,7 +56,7 @@ export class InvestorDashboardComponent {
   investorsAmount: number = 4312500;
   beneficiariesAmount = (this.beneficiaryShare / 100) * this.totalFundAmount;
   totalReturn = this.profitPercentage;
-   managementFeesAmount = (this.managementFees / 100) * this.totalFundAmount;
+  managementFeesAmount = (this.managementFees / 100) * this.totalFundAmount;
   netProfitInvestors: number = this.totalReturn - this.managementFeesAmount;
   //profitPercentage = (this.netProfitInvestors / this.totalFundAmount) * 100;
   beneficiaryfundpool = 310;
@@ -57,10 +64,10 @@ export class InvestorDashboardComponent {
   
 
   profitPieData = {
-    labels: ['Beneficiaries', 'Bank', 'Investors'],
+    labels: ['Beneficiaries', 'Bank', 'Bond'],
     datasets: [
       {
-        data: [this.beneficiariesAmount, this.bankAmount, this.investorsAmount],
+        data: [this.beneficiariesAmount, this.bankAmount, this.bondamount],
         backgroundColor: [
           '#059669', // Beneficiaries
           '#1e3a8a', // Bank
@@ -76,7 +83,7 @@ export class InvestorDashboardComponent {
     this.profitPieData.datasets[0].data = [
       this.beneficiariesAmount,
       this.bankAmount,
-      this.investorsAmount
+      this.bondamount
     ];
   }
 }
