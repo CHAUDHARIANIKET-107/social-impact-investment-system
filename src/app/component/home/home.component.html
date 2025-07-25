@@ -45,7 +45,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="card" style="cursor:pointer" (click)="goToOutcome($event)">
+                <div class="card" style="cursor:pointer" (click)="goToDashboard($event)">
                     <div class="card-icon secondary">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 3v18h18M7 12l4-4 4 4 6-6"/>
@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="card">
+                <div class="card" style="cursor:pointer" (click)="goToDashboard($event)">
                     <div class="card-icon accent">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -86,9 +86,20 @@
                     <p>
                         Bond profits fund education, healthcare, and wellbeing programs for communities in need.
                     </p>
-                    <a href="#impact" class="btn btn-impact" style="margin-top: 1rem; font-size: 0.75rem; padding: 0.5rem 1rem;">
-                        See Impact
-                    </a>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="card" style="cursor:pointer" (click)="goToFinLieracy($event)">
+                    <div class="card-icon secondary">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>5. Finacal Literacy</h3>
+                    <p>
+                        Empowering communities through education and outreach.
+                    </p>
                 </div>
             </div>
         </div>

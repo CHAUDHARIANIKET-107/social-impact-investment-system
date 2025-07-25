@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-demographic-data',
@@ -28,6 +29,8 @@ export class DemographicDataComponent {
   pieData: any = null;
   isDragActive: boolean = false;
 
+  constructor(private http: HttpClient) {}
+
   onFileChange(event: any) {
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) return;
@@ -50,6 +53,7 @@ export class DemographicDataComponent {
       });
     };
     reader.readAsBinaryString(target.files[0]);
+    
   }
 
   onDragOver(event: DragEvent) {
@@ -93,5 +97,24 @@ export class DemographicDataComponent {
         borderWidth: 2
       }]
     };
+  }
+
+  sendGridDataToApi() {
+    const apiUrl = 'http://localhost:8000/predict'; // Replace with your actual endpoint
+    this.http.post(apiUrl, this.excelData).subscribe({
+      next: (response) => {
+        console.log('Grid data sent successfully:', response);
+        try {
+          localStorage.setItem('gridApiResponse', JSON.stringify(response));
+        } catch (e) {
+          console.error('Error storing response in localStorage:', e);
+        }
+        // Optionally show a success message to the user
+      },
+      error: (error) => {
+        console.error('Error sending grid data:', error);
+        // Optionally show an error message to the user
+      }
+    });
   }
 }

@@ -30,24 +30,18 @@
 <div class="title-bar">
   <span class="title-name">Global Filters for below Historical Trend Analysis</span>
   <div class="global-filters">
-    <p-dropdown [options]="genderOptions" [(ngModel)]="selectedGender" placeholder="Gender" (onChange)="onFilterChange()" [showClear]="true" [filter]="true">
-      <ng-template let-item pTemplate="item">
-        <span *ngIf="item.value === null">All</span>
-        <span *ngIf="item.value !== null">{{item.label}}</span>
-      </ng-template>
-    </p-dropdown>
-    <p-dropdown [options]="locationOptions" [(ngModel)]="selectedLocation" placeholder="Location" (onChange)="onFilterChange()" [showClear]="true" [filter]="true">
-      <ng-template let-item pTemplate="item">
-        <span *ngIf="item.value === null">All</span>
-        <span *ngIf="item.value !== null">{{item.label}}</span>
-      </ng-template>
-    </p-dropdown>
-    <p-dropdown [options]="ageGroupOptions" [(ngModel)]="selectedAgeGroup" placeholder="Age Group" (onChange)="onFilterChange()" [showClear]="true">
-      <ng-template let-item pTemplate="item">
-        <span *ngIf="item.value === null">All</span>
-        <span *ngIf="item.value !== null">{{item.label}}</span>
-      </ng-template>
-    </p-dropdown>
+    <select [(ngModel)]="selectedGender" (change)="onFilterChange()">
+      <option [ngValue]="null">All Genders</option>
+      <option *ngFor="let option of genderOptions" [ngValue]="option.value">{{option.label}}</option>
+    </select>
+    <select [(ngModel)]="selectedLocation" (change)="onFilterChange()">
+      <option [ngValue]="null">All Locations</option>
+      <option *ngFor="let option of locationOptions" [ngValue]="option.value">{{option.label}}</option>
+    </select>
+    <select [(ngModel)]="selectedAgeGroup" (change)="onFilterChange()">
+      <option [ngValue]="null">All Age Groups</option>
+      <option *ngFor="let option of ageGroupOptions" [ngValue]="option.value">{{option.label}}</option>
+    </select>
   </div>
 </div>
 

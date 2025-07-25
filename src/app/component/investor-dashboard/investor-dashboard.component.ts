@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-investor-dashboard',
@@ -10,13 +10,17 @@ export class InvestorDashboardComponent {
     this.calculateAll();
   }
 
+  constructor(private cdr: ChangeDetectorRef){
+
+  }
+
   calculateAll() {
     this.beneficiariesAmount = (this.beneficiaryShare / 100) * this.totalFundAmount;
     this.totalReturn = this.beneficiariesAmount + this.bankAmount + this.investorsAmount;
     this.managementFeesAmount = (this.managementFees / 100) * this.totalFundAmount;
     this.netProfitInvestors = this.totalReturn - this.managementFeesAmount;
     this.csrProfitShareAmount = (this.csrProfitShare / 100) * this.totalFundAmount;
-    this.updatePieChart();
+   // this.updatePieChart();
     this.onRecalculate();
   }
   onRecalculate() {
@@ -30,10 +34,9 @@ export class InvestorDashboardComponent {
     this.totalReturn = this.profitamount;
     this.managementFeesAmount = (this.totalFundAmount/100) *2.5
     this.netProfitInvestors = this.totalReturn - this.managementFeesAmount;
-    this.beneficiariesAmount = this.beneficiaryfundpool * 0.8;
-    this.bankAmount = this.beneficiaryfundpool * 0.2;
-    this.bondamount = this.beneficiaryfundpool;
-
+    this.bondamount = this.beneficiaryfundpool * 0.2;
+    this.beneficiariesAmount = this.bondamount * 0.8;
+    this.bankAmount = this.bondamount * 0.2;
     this.updatePieChart();
   }
   //totalReturn: number = 6000000;
@@ -64,14 +67,13 @@ export class InvestorDashboardComponent {
   
 
   profitPieData = {
-    labels: ['Beneficiaries', 'Bank', 'Bond'],
+    labels: ['Beneficiaries', 'Bank'],
     datasets: [
       {
-        data: [this.beneficiariesAmount, this.bankAmount, this.bondamount],
+        data: [this.beneficiariesAmount, this.bankAmount],
         backgroundColor: [
           '#059669', // Beneficiaries
           '#1e3a8a', // Bank
-          '#d97706'  // Investors
         ],
         borderColor: '#fff',
         borderWidth: 2
@@ -81,9 +83,9 @@ export class InvestorDashboardComponent {
 
   updatePieChart() {
     this.profitPieData.datasets[0].data = [
-      this.beneficiariesAmount,
-      this.bankAmount,
-      this.bondamount
+      80,
+      20
     ];
+    this.cdr.detectChanges();
   }
 }

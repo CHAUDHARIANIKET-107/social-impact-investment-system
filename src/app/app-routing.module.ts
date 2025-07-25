@@ -9,7 +9,7 @@ import { HomeComponent } from './component/home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: InvestorDashboardComponent },
+ { path: 'dashboard', component: InvestorDashboardComponent },
   { path: 'upload', component: DemographicDataComponent },
   { path: 'outcome', component: BeneficiariesOutcomeComponent },
   { path: 'fin-lit-prog', component: FinLitProgComponent },
