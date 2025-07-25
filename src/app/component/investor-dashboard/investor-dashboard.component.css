@@ -1,3 +1,11 @@
+/* Greyed out slider label */
+.slider-label.greyed {
+    color: #b0b3b8;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 600;
+    opacity: 0.7;
+}
 * {
             margin: 0;
             padding: 0;
@@ -5,7 +13,7 @@
         }
 
         :root {
-            --background: #f1f5f9;
+        color: #2575fc;
             --foreground: #1e293b;
             --card: #ffffff;
             --card-foreground: #1e293b;
@@ -20,7 +28,7 @@
             --warning: #d97706;
             --warning-foreground: #1e293b;
             --border: #e2e8f0;
-            --shadow: 0 2px 10px -2px rgba(100, 116, 139, 0.08);
+        color: #2575fc;
             --shadow-card: 0 4px 20px -2px rgba(30, 58, 138, 0.1);
         }
 
@@ -34,7 +42,7 @@
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 24px;
+            padding: 12px;
             min-height: 100vh;
         }
 
@@ -42,19 +50,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 12px;
         }
 
         .header-content h1 {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 4px;
+            color: #2575fc;
         }
 
         .header-content p {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--foreground);
+            color: #2575fc;
         }
 
         .header-actions {
@@ -77,15 +86,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
+            padding: 5px 5px;
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--foreground);
             text-decoration: none;
             border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
+            background: linear-gradient(90deg, rgba(37,117,252,0.08) 0%, #e3eafc 100%);
             cursor: pointer;
+            border-top: 1px solid #2575fc;
+            border-left: 1px solid #2575fc;
+            border-right: 1px solid #2575fc;
+            border-bottom: 1px solid #2575fc;
             transition: all 0.2s;
         }
 
@@ -154,10 +166,15 @@
         }
 
         .card-header {
-            padding: 20px 20px 8px 20px;
+            padding: 16px 20px 8px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(90deg, #f1f5f9 60%, #e3eafc 100%);
+            border-bottom: 2px solid #05204f;
+            box-shadow: 0 2px 8px rgba(37,117,252,0.08);
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
 
         .card-title {
@@ -182,7 +199,7 @@
         }
 
         .card-content {
-            padding: 0 20px 20px 20px;
+            padding: 20px 20px 20px 20px;
         }
 
         .card-value {
@@ -219,12 +236,24 @@
         }
 
         .breakdown-label {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #03173a;
+            padding: 4px 12px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(37,117,252,0.07);
+            letter-spacing: 0.5px;
         }
 
         .breakdown-value {
-            font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    background: linear-gradient(90deg, #f1f5f9 60%, #e3eafc 100%);
+    padding: 4px 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(37,117,252,0.05);
+    letter-spacing: 0.5px;
         }
 
         .breakdown-value-success {
@@ -318,10 +347,9 @@
         }
 
         .slider-label {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: #1e3a8a;
-            min-width: 110px;
             text-align: left;
         }
 

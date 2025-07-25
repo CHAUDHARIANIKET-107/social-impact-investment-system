@@ -14,7 +14,7 @@
   padding: 0 18px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #2575fc;
+  border-bottom: 2px solid #03183d;
 }
 ::ng-deep .p-tabview-nav li {
   margin-right: 12px;

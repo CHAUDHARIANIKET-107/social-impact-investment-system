@@ -8,7 +8,22 @@ import * as XLSX from 'xlsx';
 })
 export class DemographicDataComponent {
   excelData: any[] = [];
-  columns: string[] = [];
+  columns: string[] = [
+    'Name',
+    'Age',
+    'Sex or Gender',
+    'Race and Ethnicity',
+    'Marital Status',
+    'Education Level',
+    'Income Level',
+    'Occupation',
+    'Place of Residence',
+    'Nationality',
+    'Religion',
+    'Language Spoken',
+    'Household Size'
+  ];
+  agGridColumns = this.columns.map(col => ({ headerName: col, field: col, sortable: true, filter: true, resizable: true }));
   selectedColumn: string = '';
   pieData: any = null;
   isDragActive: boolean = false;
@@ -22,9 +37,17 @@ export class DemographicDataComponent {
       const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-      this.excelData = XLSX.utils.sheet_to_json(ws, { header: 1 });
-      this.columns = this.excelData[0] as string[];
-      this.excelData = this.excelData.slice(1);
+      const rawData = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      const [header, ...rows] = rawData;
+      this.columns = header as string[];
+      this.agGridColumns = this.columns.map(col => ({ headerName: col, field: col, sortable: true, filter: true, resizable: true }));
+      this.excelData = rows.map(row => {
+        const obj: any = {};
+        (row as any[]).forEach((cell, idx) => {
+          obj[this.columns[idx]] = cell;
+        });
+        return obj;
+      });
     };
     reader.readAsBinaryString(target.files[0]);
   }

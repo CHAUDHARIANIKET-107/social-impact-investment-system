@@ -8,43 +8,37 @@
       </label>
     </div>
     <div class="template-download-link">
-      <a href="template/demographic_data_template.xlsx" download class="download-btn">
-        <i class="pi pi-download" style="margin-right:6px;"></i>Download Template
+      <a href="template/demographic_data_template.xlsx" download class="download-link">
+        <i class="pi pi-download" style="margin-right:6px;"></i>
+        <span style="color:#2575fc;text-decoration:underline;cursor:pointer;font-weight:600;">Download Template</span>
       </a>
     </div>
   </div>
 
-  <div *ngIf="excelData.length">
+  <div style="width: -webkit-fill-available;">
     <h4>Beneficiaries Demographic Data</h4>
-    <p-table [value]="excelData" [columns]="columns" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]" class="fancy-table">
-      <ng-template pTemplate="header" let-columns>
-        <tr>
-          <th *ngFor="let col of columns">{{ col }}</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-row let-columns="columns">
-        <tr>
-          <td *ngFor="let col of columns">{{ row[columns.indexOf(col)] }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
+    <ag-grid-angular
+      class="ag-theme-alpine custom-ag-grid"
+      style="width:100%;"
+      [rowData]="excelData"
+      [columnDefs]="agGridColumns"
+      [pagination]="true"
+      [paginationPageSize]="10"
+      [domLayout]="'autoHeight'"
+    ></ag-grid-angular>
 
-    <div class="chart-row-center">
+    <!-- <div class="chart-row-center">
       <div class="chart-dropdown">
         <label for="columnSelect">Select Column for Pie Chart:</label>
-        <p-dropdown [options]="columns" [(ngModel)]="selectedColumn"
-          (onChange)="onColumnSelect()" placeholder="Select"
-          [showTransitionOptions]="'0ms'"
-          [hideTransitionOptions]="'0ms'">
-          <ng-template let-option pTemplate="item">
-            <span>{{ option }}</span>
-          </ng-template>
-        </p-dropdown>
+        <select id="columnSelect" [(ngModel)]="selectedColumn" (change)="onColumnSelect()" class="native-dropdown">
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let col of columns" [value]="col">{{ col }}</option>
+        </select>
       </div>
       <div *ngIf="pieData" class="chart-pie-horizontal">
         <p-chart type="pie" [data]="pieData" [options]="{ plugins: { legend: { position: 'right', align: 'center' } } }"
         ></p-chart>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

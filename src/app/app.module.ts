@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { TableModule } from 'primeng/table';
+import { AgGridModule } from 'ag-grid-angular';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChartModule } from 'primeng/chart';
 import { TabViewModule } from 'primeng/tabview';
@@ -20,7 +20,7 @@ import { FinLitProgComponent } from './component/fin-lit-prog/fin-lit-prog.compo
   imports: [
     BrowserModule,
     FormsModule,
-    TableModule,
+    AgGridModule,
     DropdownModule,
     ChartModule,
     TabViewModule,

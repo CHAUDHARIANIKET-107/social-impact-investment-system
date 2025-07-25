@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~ag-grid-community/styles/ag-grid.css";
+@import "~ag-grid-community/styles/ag-theme-alpine.css";
+
+.custom-ag-grid .ag-paging-panel {
+  justify-content: center !important;
+  display: flex !important;
+  width: 100% !important;
+}
+
+.custom-ag-grid {
+  min-height: 400px;
+}
+
+/* Custom AG Grid styles for app look and feel */
+.custom-ag-grid .ag-header-cell {
+  background: linear-gradient(90deg, #f1f5f9 60%, #e3eafc 100%);
+  color: #2575fc;
+  font-weight: 700;
+  border-right: 1px solid #e2e8f0;
+}
+.custom-ag-grid .ag-header-cell:last-child {
+  border-right: none;
+}
+.custom-ag-grid .ag-row {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.custom-ag-grid .ag-row-selected {
+  background: #e3eafc !important;
+}
+.custom-ag-grid .ag-cell {
+  color: #1e293b;
+  border-right: 1px solid #e2e8f0;
+  font-family: 'Calibri', 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+.custom-ag-grid .ag-cell:last-child {
+  border-right: none;
+}
