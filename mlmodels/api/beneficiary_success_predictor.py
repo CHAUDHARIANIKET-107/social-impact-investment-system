@@ -1,7 +1,7 @@
 from typing import List
 
 import requests
-
+from fastapi.responses import FileResponse
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
@@ -153,3 +153,8 @@ def chat(input: ChatInput):
     context = retrieve_context(input.message)
     response = query_mistral(context, input.message)
     return {"response": response}
+
+
+@app.get("/download-csv")
+def download_csv():
+    return FileResponse("../synthetic_beneficiary_data.csv", media_type="text/csv", filename="data.csv")
