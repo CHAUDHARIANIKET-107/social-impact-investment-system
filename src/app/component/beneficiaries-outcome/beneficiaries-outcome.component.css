@@ -1,0 +1,284 @@
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.7rem 1.2rem; /* less vertical gap, same horizontal gap */
+    justify-items: stretch;
+    align-items: start;
+  }
+  
+  .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      min-height: 100vh;
+  }
+  
+  .chart-group {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    min-height: 200px;
+    position: relative;
+    margin-bottom: 0.7rem;
+    /* Remove border and box-shadow for a softer look */
+  }
+  
+  /* Unique pastel backgrounds for each chart */
+  .chart-group:nth-child(1) {
+    background: linear-gradient(135deg, #e3f0ff 0%, #f6fbff 100%); /* pastel blue */
+  }
+  .chart-group:nth-child(2) {
+    background: linear-gradient(135deg, #ffe3ec 0%, #fff6fa 100%); /* pastel pink */
+  }
+  .chart-group:nth-child(3) {
+    background: linear-gradient(135deg, #e3ffe8 0%, #f6fff9 100%); /* pastel green */
+  }
+  .chart-group:nth-child(4) {
+    background: linear-gradient(135deg, #fffbe3 0%, #fffdf6 100%); /* pastel yellow */
+  }
+  
+  .chart-group h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .chart-group p-chart {
+    width: 95% !important;
+    max-width: 700px;
+    height: 380px !important;
+    min-height: 320px;
+  }
+  
+  .pie-chart-group {
+      min-height: 450px;
+    /* No special min-height, use .chart-group's min-height */
+  }
+  .pie-chart-group p-chart,
+  .pie-chart-group p-chart > div,
+  .pie-chart-group canvas {  height: 240px !important;
+      min-height: 180px !important;
+      max-height: 260px !important;
+  }
+  
+  @media (max-width: 1200px) {
+    .chart-group p-chart {
+      max-width: 100%;
+      height: 160px !important;
+    }
+    .pie-chart-group p-chart,
+    .pie-chart-group p-chart > div,
+    .pie-chart-group canvas {
+      height: 120px !important;
+    }
+    .chart-group, .pie-chart-group {
+      min-height: 120px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .charts-container {
+      grid-template-columns: 1fr;
+    }
+    .chart-group p-chart {
+      width: 100% !important;
+      height: 120px !important;
+      min-height: 80px;
+    }
+    .pie-chart-group p-chart,
+    .pie-chart-group p-chart > div,
+    .pie-chart-group canvas {
+      height: 80px !important;
+    }
+    .chart-group, .pie-chart-group {
+      min-height: 80px;
+    }
+  }
+  
+  .global-filters-container {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .global-filters-container h3 {
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2d3a4a;
+  }
+  
+  .title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 100vw;
+    padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+    margin-bottom: 2rem;
+    border: 3px solid #1976d2;
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(59,130,246,0.04);
+    gap: 2.2rem;
+    background: none;
+    overflow-x: auto;
+  }
+  
+  .title-bar + .title-bar {
+    margin-top: 0.2rem;
+  }
+  
+  .title-name {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #2d3a4a;
+    margin-right: 2.2rem;
+    white-space: nowrap;
+  }
+  
+  .global-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .global-filters .p-dropdown {
+    min-width: 180px;
+  }
+  
+  /* Hide the down-arrow for the 'All' option in the dropdown panel */
+  .p-dropdown-items .p-dropdown-item:first-child .p-dropdown-trigger-icon {
+    display: none !important;
+  }
+  
+  @media (max-width: 900px) {
+    .global-filters-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1rem 0.7rem;
+    }
+    .global-filters-title {
+      margin-right: 0;
+      margin-bottom: 0.7rem;
+    }
+    .global-filters {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+      width: 100%;
+    }
+    .global-filters .p-dropdown {
+      min-width: 140px;
+    }
+  }
+  
+  .top-n-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 2rem;
+  }
+  .top-n-input label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2d3a4a;
+  }
+  .top-n-input input[type='number'] {
+    width: 60px;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #bfc8da;
+    border-radius: 4px;
+  }
+  
+  .top-beneficiaries-table {
+    margin-bottom: 1.2rem;
+    font-size: 0.97rem;
+  }
+  .top-beneficiaries-table th, .top-beneficiaries-table td {
+    padding: 0.35rem 0.7rem;
+  }
+  .top-beneficiaries-table th {
+    background: #e3f0ff;
+    color: #1976d2;
+    font-weight: 600;
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator {
+    margin-top: 1.2rem;
+    margin-bottom: 2.2rem;
+    background: #e3f0ff;
+    border-radius: 10px;
+    padding: 0.7rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    min-height: 56px;
+    align-items: center;
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last {
+    color: #1976d2;
+    background: #fff;
+    border: 1.5px solid #b3d1f7;
+    border-radius: 6px;
+    margin: 0 4px;
+    min-width: 38px;
+    min-height: 38px;
+    font-weight: 600;
+    font-size: 1.08rem;
+    box-shadow: 0 1px 4px rgba(25, 118, 210, 0.06);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page.p-highlight {
+    background: #1976d2;
+    color: #fff;
+    border-color: #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+    font-size: 1.13rem;
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next:not(.p-disabled):hover,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev:not(.p-disabled):hover,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first:not(.p-disabled):hover,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last:not(.p-disabled):hover,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page:not(.p-highlight):hover {
+    background: #b3d1f7;
+    color: #1976d2;
+    border-color: #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-page:focus,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-next:focus,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-prev:focus,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-first:focus,
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-last:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+  }
+  :host ::ng-deep .top-beneficiaries-table .p-paginator .p-paginator-pages {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
