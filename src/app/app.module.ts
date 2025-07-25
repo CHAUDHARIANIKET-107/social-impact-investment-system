@@ -13,6 +13,7 @@ import { DemographicDataComponent } from './component/demographic-data/demograph
 import { BeneficiariesOutcomeComponent } from './component/beneficiaries-outcome/beneficiaries-outcome.component';
 import { FinLitProgComponent } from './component/fin-lit-prog/fin-lit-prog.component';
 import { HomeComponent } from './component/home/home.component';
+import { Table, TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [AppComponent, 
@@ -27,6 +28,7 @@ import { HomeComponent } from './component/home/home.component';
     TabViewModule,
     CommonModule,
     AppRoutingModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
