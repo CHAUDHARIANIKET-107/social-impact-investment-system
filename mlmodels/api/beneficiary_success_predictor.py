@@ -1,3 +1,5 @@
+from typing import List
+
 import requests
 
 from fastapi import FastAPI
@@ -10,6 +12,30 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain.chat_models import ChatOpenAI
 import numpy as np
+from fastapi.encoders import jsonable_encoder
+import random
+
+
+first_names = [
+    "Aarav", "Vivaan", "Aditya", "Krishna", "Aryan", "Ishaan", "Rohan",
+    "Rahul", "Siddharth", "Kunal", "Yash", "Aman", "Vikram", "Manav", "Arjun",
+    "Neha", "Ananya", "Saanvi", "Kavya", "Diya", "Aishwarya", "Sneha", "Pooja",
+    "Riya", "Meera", "Tanya", "Nisha", "Shruti", "Isha", "Swati"
+]
+
+middle_names = [
+    "Raj", "Kumar", "Singh", "Prasad", "Dev", "Chandra", "Narayan", "Mohan",
+    "Rani", "Lal", "Bhanu", "Shekhar", "Nath", "Rao", "Das", "Bai", "Deep",
+    "Preet", "Mani", "Inder", "Sundar", "Lakshmi", "Venu", "Vikram", "Varun"
+]
+
+last_names = [
+    "Sharma", "Verma", "Reddy", "Patel", "Nair", "Kapoor", "Joshi", "Desai",
+    "Mehta", "Singh", "Kumar", "Das", "Chopra", "Jain", "Bose", "Banerjee",
+    "Menon", "Rao", "Pillai", "Gupta", "Malhotra", "Pandey", "Mishra", "Yadav",
+    "Thakur", "Dwivedi", "Tiwari", "Rastogi", "Kulkarni", "Naidu"
+]
+
 
 with open("../faiss_index.pkl", "rb") as f:
     index, corpus = pickle.load(f)
@@ -106,6 +132,31 @@ def predict_success_score(input_data: BeneficiaryInput):
         "base_score_used": round(base_score, 3),
         "raw_model_score": round(model_score, 3)
     }
+
+@app.post("/bulk_predict")
+def bulk_predict_success_scores(input_list: List[BeneficiaryInput]):
+    results = []
+
+    for input_data in input_list:
+        data = input_data.dict()
+        base_score = calculate_base_score(data)
+        model_input = prepare_model_input(data)
+        model_score = float(model.predict(model_input)[0])
+        final_score = round(min(1.0, 0.3 * base_score + 0.7 * model_score), 3)
+        full_name = random.choice(first_names) + " " + random.choice(middle_names) + " " + random.choice(last_names)
+
+        # Build result with name first
+        ordered_data = {
+            "name": full_name,
+            **data,
+            "predicted_success_score": final_score,
+            "base_score_used": round(base_score, 3),
+            "raw_model_score": round(model_score, 3),
+        }
+
+        results.append({"candidate_info": ordered_data})
+
+    return {"results": results}
 
 @app.post("/explain_success")
 def explain_with_mistral(input_data: BeneficiaryInput):
